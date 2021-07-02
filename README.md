@@ -74,15 +74,16 @@ def build_generator():
 #Alpha — α is a hyperparameter which controls the underlying value to which the
 #function saturates negatives network inputs.
 #Momentum — Speed up the training
+
 ##########################################################################
+
 #Given an input image, the Discriminator outputs the likelihood of the image being real.
 #Binary classification - true or false (we're calling it validity)
 
+ 
+```python
 def build_discriminator():
-
-
     model = Sequential()
-
     model.add(Flatten(input_shape=img_shape))
     model.add(Dense(512))
     model.add(LeakyReLU(alpha=0.2))
@@ -93,8 +94,10 @@ def build_discriminator():
 
     img = Input(shape=img_shape)
     validity = model(img)
-
     return Model(img, validity)
+```
+
+
 #The validity is the Discriminator’s guess of input being real or not.
 #Now that we have constructed our two models it’s time to pit them against each other.
 #We do this by defining a training function, loading the data set, re-scaling our training
@@ -109,9 +112,12 @@ def train(epochs, batch_size=128, save_interval=50):
     X_train = (X_train.astype(np.float32) - 127.5) / 127.5
 
 #Add channels dimension. As the input to our gen and discr. has a shape 28x28x1.
-    X_train = np.expand_dims(X_train, axis=3) 
-
-    half_batch = int(batch_size / 2)
+    
+```python
+ X_train = np.expand_dims(X_train, axis=3) 
+ half_batch = int(batch_size / 2)
+```
+  
 
 #We then loop through a number of epochs to train our Discriminator by first selecting
 #a random batch of images from our true dataset, generating a set of images from our
@@ -154,6 +160,7 @@ def train(epochs, batch_size=128, save_interval=50):
 #Create noise vectors as input for generator. 
 #Create as many noise vectors as defined by the batch size. 
 #Based on normal distribution. Output will be of size (batch size, 100)
+
         noise = np.random.normal(0, 1, (batch_size, 100)) 
 
         # The generator wants the discriminator to label the generated samples
