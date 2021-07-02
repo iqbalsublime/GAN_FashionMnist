@@ -1,7 +1,8 @@
 
 # GAN Fashion Mnist
 
-
+ 
+```python
 from keras.datasets import fashion_mnist
 from keras.layers import Input, Dense, Reshape, Flatten
 from keras.layers import BatchNormalization
@@ -30,12 +31,19 @@ noise_shape = (100,) #1D array of size 100 (latent vector / noise)
 print(noise_shape)
 (28, 28, 1)
 (100,)
+```
+
+
 ##########################################################################
 #Given input of noise (latent) vector, the Generator produces an image.
-def build_generator():
 
+ 
+```python
+def build_generator():
     noise_shape = (100,) #1D array of size 100 (latent vector / noise)
     print(noise_shape)
+```
+
 
 #Define your generator network 
 #Here we are only using Dense layers. But network can be complicated based
@@ -68,7 +76,7 @@ def build_generator():
 #Momentum — Speed up the training
 ##########################################################################
 #Given an input image, the Discriminator outputs the likelihood of the image being real.
-    #Binary classification - true or false (we're calling it validity)
+#Binary classification - true or false (we're calling it validity)
 
 def build_discriminator():
 
