@@ -297,3 +297,6 @@ fashion_mnist_2140.png   fashion_mnist_6070.png  fashion_mnist_9990.png
 ### Output:
 
 ![Alt Text](https://github.com/iqbalsublime/GAN_FashionMnist/blob/main/ezgif.com-gif-maker.gif)
+
+### Credits
+https://github.com/bnsreenu 
