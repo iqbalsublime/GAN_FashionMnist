@@ -238,23 +238,39 @@ valid = discriminator(img)  #Validity check on the generated image
 # The combined model  (stacked generator and discriminator) takes
 # noise as input => generates images => determines validity
 
+ 
+```python
+
 combined = Model(z, valid)
 combined.compile(loss='binary_crossentropy', optimizer=optimizer)
 
-
 train(epochs=25000, batch_size=32, save_interval=10)
+
+```
+
+
 
 #Save model for future use to generate fake images
 #Not tested yet... make sure right model is being saved..
 #Compare with GAN4
 
-generator.save('generator_model.h5')  #Test the model on GAN4_predict...
+
+
+```python
+
+generator.save('generator_model.h5')  
+
+```
+
+#Test the model on GAN4_predict...
 #Change epochs back to 30K
                 
 #Epochs dictate the number of backward and forward propagations, the batch_size
 #indicates the number of training samples per backward/forward propagation, and the
 #sample_interval specifies after how many epochs we call our sample_image function.
 
+
+```python
 
 13036 [D loss: 0.725590, acc.: 53.12%] [G loss: 0.833046]
 13037 [D loss: 0.669043, acc.: 56.25%] [G loss: 0.764627]
@@ -263,11 +279,20 @@ generator.save('generator_model.h5')  #Test the model on GAN4_predict...
 13040 [D loss: 0.679665, acc.: 62.50%] [G loss: 0.834069]
 13041 [D loss: 0.691804, acc.: 46.88%] [G loss: 0.882120]
 
+```
+
+### Lets check the generated images
+
+```python
+
 ls
 ................
 fashion_mnist_2120.png   fashion_mnist_6050.png  fashion_mnist_9970.png
 fashion_mnist_2130.png   fashion_mnist_6060.png  fashion_mnist_9980.png
 fashion_mnist_2140.png   fashion_mnist_6070.png  fashion_mnist_9990.png
+
+```
+
 
 ### Output:
 
